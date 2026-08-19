@@ -352,4 +352,16 @@ processing → cancelled
 ### 4\.模型适配器
 
 系统不应该让业务代码直接依赖某一家模型厂商，而是定义统一接口：
+```TypeScript
+interface VideoModelProvider {
+  createTask(input: CreateVideoInput): Promise<CreateVideoResult>;
+  getTask(providerTaskId: string): Promise<VideoTaskResult>;
+}
+```
 
+未来接入不同模型时分别实现：
+VideoModelProvider
+├─ MockVideoProvider       模拟模型
+├─ JimengVideoProvider     即梦模型
+├─ RunwayVideoProvider     Runway 模型
+└─ LocalVideoProvider      本地开源模型
