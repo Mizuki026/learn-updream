@@ -365,3 +365,21 @@ VideoModelProvider
 ├─ JimengVideoProvider     即梦模型
 ├─ RunwayVideoProvider     Runway 模型
 └─ LocalVideoProvider      本地开源模型
+
+## MVP验收标准
+模型接口满足以下条件即算完成：
+- 能提交一条提示词+参考图生成视频任务
+- 提交后能获得厂商任务ID
+- 能通过厂商任务ID查询状态
+- 成功后能获得视频地址
+- 失败后能获得可读的错误信息
+- 模拟模型和接口模型使用相同的接口模式
+
+初期我们先实现 MockVideoProvider。它不调用真实模型，而是模拟：
+提交任务
+   ↓
+等待几秒
+   ↓
+状态从 queued 变为 processing
+   ↓
+返回一个测试视频
