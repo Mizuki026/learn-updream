@@ -418,7 +418,7 @@ interface VideoTaskResult {
 
 interface VideoModelProvider {
   createTask(input: CreateVideoInput): Promise<CreateVideoResult>;
-  getTask(providerTaskId: string): Promise<VideoTaskResult>;
+  getTask(providerTa  skId: string): Promise<VideoTaskResult>;
 }
 ```
 
